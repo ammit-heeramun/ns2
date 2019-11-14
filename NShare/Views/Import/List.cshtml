@@ -1,0 +1,44 @@
+﻿@model NShare.ViewModel.SharesViewModal
+
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Shares List</h2>
+
+@if (Model.Shares.Count == 0)
+{
+    <h3> No Shares available to display</h3>
+}
+else
+{
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">name</th>
+                <th scope="col">quantity</th>
+                <th scope="col">unit_price</th>
+                <th scope="col">closed-date</th>
+                <th scope="col">Dealings</th>
+                <th scope="col">Balance</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var share in Model.Shares)
+            {
+            <tr>
+                <td>@share.name</td>
+                <td>@share.quantity</td>
+                <td>@share.unit_price</td>
+                <td>@share.closed_date</td>
+                <td>ND</td>
+                <td>@(share.quantity*share.unit_price)</td>
+            </tr>
+            }
+        </tbody>
+        </table>
+
+
+}

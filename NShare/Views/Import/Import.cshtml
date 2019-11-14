@@ -1,0 +1,93 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/scripts/bootstrap.min.js"></script>
+    <link href="~/Content/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <script src="~/scripts/jquery.dataTables.min.js"></script>
+    <script src="~/scripts/dataTables.bootstrap4.min.js"></script>
+    <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.12.0/jquery.validate.min.js"></script>
+    <style type="text/css">
+        .error {
+            color: red;
+            display: inline-block;
+            margin-bottom: -57px !important;
+            width: 100%;
+        }
+    </style>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $('form').validate({
+                rules: {
+                    xmlFile: {
+                        required: true
+                    }
+                },
+                messages: {
+                    xmlFile: "Choose file to upload",
+                }
+            })
+            $('#dataTable').DataTable({
+                "ajax": {
+                    "url": "/Import/GetData",
+                    "type": "GET",
+                    "datatype": "json"
+                },
+                "columns": [
+                    { "data": "id" },
+                    { "data": "name" },
+                    { "data": "quantity" },
+                    { "data": "unit_price" },
+                    { "data": "closed_date" }
+                ]
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="container py-5">
+        @using (Html.BeginForm("Upload", "Import", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div class="row">
+                <div class="col-sm-1 col-md-6 col-xs-12">
+                    <h5 class="text-danger">@ViewBag.Error</h5>
+                    <h5 class="text-success">@ViewBag.Success</h5>
+                    <div class="form-group">
+                        <label>Choose XML File:</label>
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input id="xmlFile" name="xmlFile" type="file" class="custom-file-input" />
+                                <label class="custom-file-label"></label>
+                            </div>
+                            <div class="input-group-append">
+                                <input type="submit" class="btn btn-outline-primary" value="Upload" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        <table id="dataTable" class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>name</th>
+                    <th>quantity</th>
+                    <th>unit_price</th>
+                    <th>closed-date</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</body>
+</html>
+

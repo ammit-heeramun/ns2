@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<shares>
+	<share>
+			<id>1</id>
+			<name>Air Mauritius</name>
+			<quatity>580</quatity>
+			<unit_price>3</unit_price>
+			<closed_date></closed_date>
+	</share>
+	<share>
+			<id>2</id>
+			<name>ENL</name>
+			<quatity>300</quatity>
+			<unit_price>80</unit_price>
+			<closed_date>30112019</closed_date>
+	</share>
+	<share>
+			<id>3</id>
+			<name>Lottotech</name>
+			<quatity>680</quatity>
+			<unit_price>20</unit_price>
+			<closed_date>01122019</closed_date>
+	</share>
+	<share>
+			<id>4</id>
+			<name>IBL</name>
+			<quatity>780</quatity>
+			<unit_price>100</unit_price>
+			<closed_date></closed_date>
+	</share>
+	<share>
+			<id>5</id>
+			<name>ABE</name>
+			<quatity>5800</quatity>
+			<unit_price>3</unit_price>
+			<closed_date>01122019</closed_date>
+	</share>
+</shares>
